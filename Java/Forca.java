@@ -148,7 +148,6 @@ public class Forca {
         };
         int numero_aleatorio = random.nextInt(banco_de_palavras.length);
         String palavra = banco_de_palavras[numero_aleatorio].toLowerCase();
-        palavra = "Casa";
         return palavra;
     }
 }
