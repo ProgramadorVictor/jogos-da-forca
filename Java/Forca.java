@@ -9,7 +9,6 @@ public class Forca {
         Scanner in = new Scanner(System.in);
         Random random = new Random();
         System.out.println("Seja-bem vindo ao jogo da forca em java");
-        //No momento somente funcionando modo em dupla!
         String palavra = "";
         while (palavra == "") {
             System.out.println("[1] -- Para jogar sozinho!");
