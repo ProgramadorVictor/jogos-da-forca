@@ -1,4 +1,5 @@
 from random import randint
+import os
 
 banco_de_palavras = [
     "Abacate",
@@ -45,7 +46,35 @@ banco_de_palavras = [
     "Alface"
 ]
 
-palavra = banco_de_palavras[randint(0, len(banco_de_palavras))].lower()
+print("Seja bem-vindo (a) ao jogo da forca em Python!")
+palavras = []
+while(True):
+    print("[1] -- Para jogar sozinho!")
+    print("[2] -- Para jogar em dupla!")
+    print("="*100)
+    valor = input("Digite um valor [1/2]:")
+    
+    if(valor == "1"):
+        try:
+            arquivo = open("palavras.txt", "r")
+        except FileNotFoundError:
+            arquivo = open("palavras.txt", "w")
+            for i in banco_de_palavras:
+                arquivo.write(i.lower()+"\n")
+        arquivo = open("palavras.txt", "r")
+        conteudo = arquivo.read()
+        palavras = conteudo.split()
+        palavra = banco_de_palavras[randint(0, len(palavras))].lower()
+        break
+    elif(valor == "2"):
+        palavra = input("Digite a palavra:").lower()
+        os.system('cls' if os.name == 'nt' else 'clear')
+        break
+    else:
+        print("="*100)
+        print("O valor digitado é inválido")
+        print("="*100)
+        continue
 
 sublinhado = len(palavra) * ["_"]
 vidas = 7
@@ -76,8 +105,6 @@ def letraEcontrada(letra, palavra, sublinhado, vidas):
     else:
         vidas -= 1
     return vidas
-
-print("Seja bem-vindo (a) ao jogo da forca em Python!")
 
 cont = 0
 while(vidas > 0 ):
